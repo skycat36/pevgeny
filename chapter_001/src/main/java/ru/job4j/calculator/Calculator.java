@@ -17,7 +17,12 @@ public class Calculator {
     }
 
     public void div(double first, double second) {
-        this.result = first / second;
+		if (second != 0) {
+        	this.result = first / second; 
+		}
+		else { 
+			this.result	= -1.0;
+		}
     }	
 	
     public double getResult() {

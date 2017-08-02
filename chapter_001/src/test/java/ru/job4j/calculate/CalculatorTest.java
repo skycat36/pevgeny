@@ -39,4 +39,12 @@ public class CalculatorTest {
         assertThat(result, is(expected));
     }
 	
+	@Test
+	    public void whenOneDivisionZeroThenNull() {
+		Calculator calc = new Calculator();
+        calc.div(1D, 0);
+        double result = calc.getResult();
+        double expected = -1.0;
+        assertThat(result, is(expected));
+		}
 }
