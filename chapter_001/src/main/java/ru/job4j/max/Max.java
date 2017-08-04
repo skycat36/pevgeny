@@ -1,7 +1,6 @@
 package ru.job4j.max;
 
 /**
- * Calculate.
  *
  * @author Evgeny Popov (36furious@gmail.com)
  * @version $Id$
@@ -17,4 +16,10 @@ public class Max {
 		return first > second ?  first :  second;
 	
 	}
-}
+
+	public int max(int first, int second, int third) {
+	return max(max(first, second), third);
+	}
+	
+
+} 
