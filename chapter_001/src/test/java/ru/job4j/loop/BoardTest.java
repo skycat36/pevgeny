@@ -15,8 +15,13 @@ public class BoardTest {
         assertThat(result, is(expected));
  }
 
-    /* @Test
+    @Test
     public void whenPaintBoardWithWidthFiveAndHeightFourThenStringWithFiveColsAndFourRows() {
-        //напишите здесь тест, проверяющий формирование доски 5 на 4.
-    } */
+        //тест, проверяющий формирование доски 5 на 4.
+        Board board = new Board();
+        String result = board.paint(5, 4);
+        final String line = System.getProperty("line.separator");
+        String expected = String.format("x x %s x x%sx x %s x x%sx x %s", line, line, line, line, line);
+        assertThat(result, is(expected));
+    }
 }

@@ -2,6 +2,10 @@ package ru.job4j.loop;
 
 public class Board {
 
+/**
+ * Функция paint(int width, int height) принимает  в качестве параметра int width- высоту доски, int height- ширину доски
+ */
+
 public String paint(int width, int height) {
 	StringBuilder board = new StringBuilder ("");
 	for (int i=0; i < width; i++) {
@@ -12,7 +16,6 @@ public String paint(int width, int height) {
 				board.append(" ");
 			}
 		}
-			//board.append("\r\n");
 		board.append(System.getProperty("line.separator"));
 
 	}
