@@ -20,6 +20,5 @@ public class RotateArray {
         }
     return array;
     }
-
 }
 
