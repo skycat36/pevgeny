@@ -10,7 +10,6 @@ public class MergeArray {
             if (oneArr[i] < twoArr[j]) {
                        threeArr[i + j] = oneArr[i];
                        i++;
-
             } else {
                 threeArr[i + j] = twoArr[j];
                 j++;
