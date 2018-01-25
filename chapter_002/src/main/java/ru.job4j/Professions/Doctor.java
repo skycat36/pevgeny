@@ -2,11 +2,11 @@ package main.java.ru.job4j.Professions;
 
 public class Doctor extends Professions {
 
-    char way_in_medcine;
+    String way_in_medcine;
 
-    public Doctor(char FIO_, char adress_, int work_experience_, boolean diploma_, int age_, int salary_, char way_in_medcine_) {
-        super(FIO_, adress_, work_experience_, diploma_, age_, salary_);
-        way_in_medcine = way_in_medcine_;
+    public Doctor(String FIO, String adress, int work_experience, boolean diploma, int age, int salary, String way_in_medcine) {
+        super(FIO, adress, work_experience, diploma, age, salary);
+        this.way_in_medcine = way_in_medcine;
     }
 
     public People Heal(People people){
@@ -14,7 +14,7 @@ public class Doctor extends Professions {
         return people;
     }
 
-    public char give_out_help(People people){
+    public String give_out_help(People people){
         return people.getFIO();
     }
 

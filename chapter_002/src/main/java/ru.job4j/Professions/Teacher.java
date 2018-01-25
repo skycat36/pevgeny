@@ -1,11 +1,11 @@
 package main.java.ru.job4j.Professions;
 
 public class Teacher extends Professions {
-    char discepline;
+    String discepline;
 
-    public Teacher(char FIO_, char adress_, int work_experience_, boolean diploma_, int age_, int salary_, char discepline_) {
-        super(FIO_, adress_, work_experience_, diploma_, age_, salary_);
-        discepline = discepline_;
+    public Teacher(String FIO, String adress, int work_experience, boolean diploma, int age, int salary, String discepline) {
+        super(FIO, adress, work_experience, diploma, age, salary);
+        this.discepline = discepline;
     }
 
     public Student Teach(Student student, int know){

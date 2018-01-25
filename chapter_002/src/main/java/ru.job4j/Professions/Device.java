@@ -1,12 +1,12 @@
 package main.java.ru.job4j.Professions;
 
 public class Device {
-    char name;
+    String name;
     boolean defect;
 
-    public Device(char name_, boolean defect_){
-        name = name_;
-        defect = defect_;
+    public Device(String name, boolean defect){
+        this.name = name;
+        this.defect = defect;
     }
 
     public void changeDefect(){

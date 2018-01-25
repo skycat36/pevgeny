@@ -1,12 +1,12 @@
 package main.java.ru.job4j.Professions;
 
 public class Student {
-    char FIO;
+    String FIO;
     int knowelage;
 
-    public Student(char FIO_, int knowelage_){
-        FIO = FIO_;
-        knowelage = knowelage_;
+    public Student(String FIO, int knowelage){
+        this.FIO = FIO;
+        this.knowelage = knowelage;
     }
 
     public int getKnowelage() {
