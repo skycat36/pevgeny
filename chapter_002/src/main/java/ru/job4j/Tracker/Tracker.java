@@ -1,14 +1,21 @@
 package main.java.ru.job4j.Tracker;
 
 public class Tracker {
-    private Item[] items = new Item[100];
-    private int position = 0;
+    private Item[] items = new Item[100];   //Массив обьектов
+    private int position = 0;               //Позиция последнего элемента
 
+    /*  Добавляем элемент в массив
+    *   @param item - добавляемый обьект
+    */
     public void add(Item item) {
         this.items[position] = item;
         position++;
     }
 
+
+    /*  Обновляем элемент в массиве
+    *   @param item - Обновляемый обьект
+    */
     public void update(Item item) {
         for (int index = 0; index < position; index++) {
             if (this.items[index].getId().equals(item.getId())) {
@@ -18,6 +25,9 @@ public class Tracker {
         }
     }
 
+    /*  Ищем элемент в массиве по id
+    *   @param String id - id обьекта
+    */
     public Item findByid(String id) {
         for (Item item : items) {
             if (item.getId().equals(id)) {
@@ -27,6 +37,9 @@ public class Tracker {
         return null;
     }
 
+    /*  Удаляем элемент в массиве по id
+    *   @param String id - id обьекта
+    */
     public void delete(String id) {
         for (int i=0; i < position; i++){
             if (items[i].getId().equals(id)){
@@ -42,10 +55,13 @@ public class Tracker {
         }
     }
 
+    /*
+    Вывод всех непустых элементов из массив
+    */
     public Item[] getAll() {
         Item[] temp;
         int countNotes = 0;
-
+        //Подсчет непустых элементов
         for (Item item : items) {
             if (item != null) {
                 countNotes++;

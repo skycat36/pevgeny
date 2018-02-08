@@ -12,6 +12,9 @@ public class Item {
     public Item(){
     }
 
+    /*
+        Конструктор
+    */
     public Item(String name, String desc, int created, String[] comments){
         Date date = new Date();
         this.id = date.toString();
