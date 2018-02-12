@@ -6,9 +6,7 @@ package main.java.ru.job4j.Tracker;
  * @since 0.1
  */
 public class StartUI {
-    /**
-     * Константа меню для добавления новой заявки.
-     */
+    //Константа меню для добавления новой заявки.
     private static final String ADD = "0";
     private static final String Show_all = "1";
     private static final String Edit_item = "2";
@@ -16,18 +14,13 @@ public class StartUI {
     private static final String Find_item_by_Id = "4";
     private static final String Find_items_by_name = "5";
 
-    /**
-     * Константа для выхода из цикла.
-     */
-    private static final String EXIT = "6";
-    /**
-     * Получение данных от пользователя.
-     */
+
+
+    //Получение данных от пользователя.
     private final Input input;
 
-    /**
-     * Хранилище заявок.
-     */
+
+    //Хранилище заявок.
     private final Tracker tracker;
 
     /**
@@ -40,9 +33,8 @@ public class StartUI {
         this.tracker = tracker;
     }
 
-    /**
-     * Основой цикл программы.
-     */
+
+    //Основой цикл программы.
     public void init() {
         boolean exit = false;
         while (!exit) {
@@ -60,9 +52,8 @@ public class StartUI {
         }
     }
 
-    /**
-     * Метод реализует добавленяи новый заявки в хранилище.
-     */
+
+    //Метод реализует добавленяи новый заявки в хранилище.
     private void createItem() {
         System.out.println("------------ Добавление новой заявки --------------");
         String name = this.input.ask("Введите имя заявки :");
@@ -72,9 +63,8 @@ public class StartUI {
         System.out.println("------------ Новая заявка с getId : " + item.getId() + "-----------");
     }
 
-    /**
-     * Метод реализует печать всех элементов на экран.
-     */
+
+    //Метод реализует печать всех элементов на экран.
     private void showAllItems(){
         Item[] items = tracker.getAll();
         for (int i = 0; i < items.length; i++){
@@ -83,9 +73,8 @@ public class StartUI {
         System.console();
     }
 
-    /**
-     * Метод реализует редактирование элемента.
-     */
+
+    //Метод реализует редактирование элемента.
     private void editItem(){
         System.out.println("------------ Обновление заявки --------------");
         String id = this.input.ask("Введите ID :");
@@ -97,27 +86,22 @@ public class StartUI {
         this.tracker.update(item);
     }
 
-    /**
-     * Метод реализует удаление элемента.
-     */
+    //Метод реализует удаление элемента.
     private void deleteItem(){
         System.out.println("------------ Удаление заявки --------------");
         String id = this.input.ask("Введите ID :");
         tracker.delete(id);
     }
 
-    /**
-     * Метод реализует поиск элемента по ID.
-     */
+    //Метод реализует поиск элемента по ID.
     private void findItemById(){
         System.out.println("------------ Поиск записи по заявки --------------");
         String id = this.input.ask("Введите ID :");
         this.input.print(tracker.findByid(id));
     }
 
-    /**
-     * Метод реализует поиск элемента по имени.
-     */
+
+    //Метод реализует поиск элемента по имени.
     private void findItemByName(){
         System.out.println("------------ Поиск записи по имени --------------");
         String name = this.input.ask("Введите имя заявки :");
@@ -129,9 +113,8 @@ public class StartUI {
         }
     }
 
-    /**
-     * Метод реализует отображение меню на экране.
-     */
+
+    //Метод реализует отображение меню на экране.
     private void showMenu() {
         System.out.println("Меню.\n");
         System.out.println("0. Add new Item\n" +

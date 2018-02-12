@@ -12,8 +12,8 @@ public class Item {
     public Item(){
     }
 
-    /*
-        Конструктор
+    /**
+     *   Конструктор
     */
     public Item(String name, String desc, int created, String[] comments){
         Date date = new Date();
