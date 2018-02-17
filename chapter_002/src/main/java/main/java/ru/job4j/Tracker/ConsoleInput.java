@@ -2,7 +2,7 @@ package main.java.ru.job4j.Tracker;
 
 import java.util.Scanner;
 
-public class Input {
+public class ConsoleInput {
 
     public String ask(String question){
         System.out.println(question);

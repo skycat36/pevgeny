@@ -17,7 +17,7 @@ public class StartUI {
 
 
     //Получение данных от пользователя.
-    private final Input input;
+    private final ConsoleInput consoleInput;
 
 
     //Хранилище заявок.
@@ -25,11 +25,11 @@ public class StartUI {
 
     /**
      * Конструтор инициализирующий поля.
-     * @param input ввод данных.
+     * @param consoleInput ввод данных.
      * @param tracker хранилище заявок.
      */
-    public StartUI(Input input, Tracker tracker) {
-        this.input = input;
+    public StartUI(ConsoleInput consoleInput, Tracker tracker) {
+        this.consoleInput = consoleInput;
         this.tracker = tracker;
     }
 
@@ -39,7 +39,7 @@ public class StartUI {
         boolean exit = false;
         while (!exit) {
             this.showMenu();
-            String answer = this.input.ask("Введите пункт меню : ");
+            String answer = this.consoleInput.ask("Введите пункт меню : ");
             switch (answer){
                 case ADD: this.createItem(); break;
                 case Show_all:  this.showAllItems(); break;
@@ -56,8 +56,8 @@ public class StartUI {
     //Метод реализует добавленяи новый заявки в хранилище.
     private void createItem() {
         System.out.println("------------ Добавление новой заявки --------------");
-        String name = this.input.ask("Введите имя заявки :");
-        String desc = this.input.ask("Введите строку :");
+        String name = this.consoleInput.ask("Введите имя заявки :");
+        String desc = this.consoleInput.ask("Введите строку :");
         Item item = new Item(name, desc,0,null);
         this.tracker.add(item);
         System.out.println("------------ Новая заявка с getId : " + item.getId() + "-----------");
@@ -68,7 +68,7 @@ public class StartUI {
     private void showAllItems(){
         Item[] items = tracker.getAll();
         for (int i = 0; i < items.length; i++){
-            this.input.print(items[i]);
+            this.consoleInput.print(items[i]);
         }
         System.console();
     }
@@ -77,10 +77,10 @@ public class StartUI {
     //Метод реализует редактирование элемента.
     private void editItem(){
         System.out.println("------------ Обновление заявки --------------");
-        String id = this.input.ask("Введите ID :");
+        String id = this.consoleInput.ask("Введите ID :");
         Item item = tracker.findByid(id);
-        String name = this.input.ask("Введите имя заявки :");
-        String desc = this.input.ask("Введите строку :");
+        String name = this.consoleInput.ask("Введите имя заявки :");
+        String desc = this.consoleInput.ask("Введите строку :");
         item.setName(name);
         item.setDesc(desc);
         this.tracker.update(item);
@@ -89,26 +89,26 @@ public class StartUI {
     //Метод реализует удаление элемента.
     private void deleteItem(){
         System.out.println("------------ Удаление заявки --------------");
-        String id = this.input.ask("Введите ID :");
+        String id = this.consoleInput.ask("Введите ID :");
         tracker.delete(id);
     }
 
     //Метод реализует поиск элемента по ID.
     private void findItemById(){
         System.out.println("------------ Поиск записи по заявки --------------");
-        String id = this.input.ask("Введите ID :");
-        this.input.print(tracker.findByid(id));
+        String id = this.consoleInput.ask("Введите ID :");
+        this.consoleInput.print(tracker.findByid(id));
     }
 
 
     //Метод реализует поиск элемента по имени.
     private void findItemByName(){
         System.out.println("------------ Поиск записи по имени --------------");
-        String name = this.input.ask("Введите имя заявки :");
+        String name = this.consoleInput.ask("Введите имя заявки :");
         Item item[] = tracker.getAll();
         for (int i = 0; i < item.length; i++){
             if (item[i].getName().equals(name)){
-                this.input.print(item[i]); break;
+                this.consoleInput.print(item[i]); break;
             }
         }
     }
@@ -132,6 +132,6 @@ public class StartUI {
      * @param args
      */
     public static void main(String[] args) {
-        new StartUI(new Input(), new Tracker()).init();
+        new StartUI(new ConsoleInput(), new Tracker()).init();
     }
 }
