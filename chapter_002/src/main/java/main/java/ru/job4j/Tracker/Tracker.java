@@ -1,8 +1,8 @@
 package main.java.ru.job4j.Tracker;
 
 public class Tracker {
-    private main.java.ru.job4j.Tracker.Item[] items = new main.java.ru.job4j.Tracker.Item[100];   //Массив обьектов
-    private int position = 0;               //Позиция последнего элемента
+    private main.java.ru.job4j.Tracker.Item[] items = new main.java.ru.job4j.Tracker.Item[100];
+    private int position = 0;
 
     /**  Добавляем элемент в массив
     *   @param item - добавляемый обьект
@@ -45,7 +45,7 @@ public class Tracker {
             if (items[i].getId().equals(id)){
                 items[i] = new Item();
 
-                Item temp = items[i+1];                     // смещение удаленных элементов в конец
+                Item temp = items[i+1];
                 for (int j = i; j < position; j++){
                     items[j] = temp;
                     temp = items[j+1];
@@ -55,11 +55,9 @@ public class Tracker {
         }
     }
 
-    //Вывод всех непустых элементов из массив
     public Item[] getAll() {
         Item[] temp;
         int countNotes = 0;
-        //Подсчет непустых элементов
         for (Item item : items) {
             if (item != null) {
                 countNotes++;
