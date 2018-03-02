@@ -10,6 +10,8 @@ public class Item {
     private String[] comments;
 
     public Item(){
+        Date date = new Date();
+        this.id = date.toString();
     }
 
     /**

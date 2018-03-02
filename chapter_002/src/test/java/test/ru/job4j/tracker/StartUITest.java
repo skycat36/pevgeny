@@ -20,10 +20,10 @@ public class StartUITest {
         //Напрямую добавляем заявку
         Item item = tracker.add(new Item());
         //создаём StubInput с последовательностью действий
-        Input input = new StubInput(new String[]{"1", item.getId(), "test name", "desc", "6"});
+        Input input = new StubInput(new String[]{"2", item.getId(), "test name", "desc", "6"});
         // создаём StartUI и вызываем метод init()
         new StartUI(input, tracker).init();
         // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
-        Assert.assertEquals(tracker.findByid(item.getId()).getName(), "");
+        Assert.assertEquals(tracker.findByid(item.getId()).getName(), "test name");
     }
 }
