@@ -1,4 +1,4 @@
-package main.java.ru.job4j.Tracker;
+package ru.job4j.tracker;
 
 /**
  * @author Popov Evgeny
@@ -24,6 +24,11 @@ public class StartUI {
      * @param tracker хранилище заявок.
      */
     public StartUI(Input consoleInput, Tracker tracker) {
+        this.consoleInput = consoleInput;
+        this.tracker = tracker;
+    }
+
+    public StartUI(ConsoleInput consoleInput, Tracker tracker) {
         this.consoleInput = consoleInput;
         this.tracker = tracker;
     }
@@ -54,12 +59,13 @@ public class StartUI {
         System.out.println("------------ Новая заявка с getId : " + item.getId() + "-----------");
     }
 
-    private void showAllItems(){
+    private Item[] showAllItems(){
         Item[] items = tracker.getAll();
         for (int i = 0; i < items.length; i++){
             this.consoleInput.print(items[i]);
         }
         System.console();
+        return  items;
     }
 
     private void editItem(){
@@ -116,6 +122,6 @@ public class StartUI {
      */
     public static void main(String[] args) {
 
-        new StartUI(new Input(), new Tracker()).init();
+        new StartUI(new ConsoleInput(), new Tracker()).init();
     }
 }

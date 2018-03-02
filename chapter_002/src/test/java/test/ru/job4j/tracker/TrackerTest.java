@@ -1,7 +1,7 @@
-package test.java.ru.job4j.Tracker;
+package test.ru.job4j.tracker;
 
-import main.java.ru.job4j.Tracker.Item;
-import main.java.ru.job4j.Tracker.Tracker;
+import ru.job4j.tracker.Item;
+import ru.job4j.tracker.Tracker;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -96,12 +96,11 @@ public class TrackerTest {
         tracker.add(itemOne);
         tracker.add(itemTwo);
         tracker.add(itemThree);
-        int CountElem = 3;
         Item[] allElem = tracker.getAll();
         boolean result;
 
-            result = allElem.length == CountElem && itemOne.equals(allElem[0]) && itemOne.equals(allElem[2]) &&
-                    itemOne.equals(allElem[3]);     //Если количество и сами элементы совпадают
+            result = itemOne.equals(allElem[0]) && itemTwo.equals(allElem[1]) &&
+                    itemThree.equals(allElem[2]);     //Если количество и сами элементы совпадают
 
         boolean expected = true;
         Assert.assertEquals(result, expected);

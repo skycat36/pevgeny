@@ -1,4 +1,4 @@
-package main.java.ru.job4j.Tracker;
+package ru.job4j.tracker;
 
 import java.util.Date;
 
@@ -48,7 +48,7 @@ public class Item {
         return this.id;
     }
 
-    String getName(){
+    public String getName(){
         return this.name;
     }
 
