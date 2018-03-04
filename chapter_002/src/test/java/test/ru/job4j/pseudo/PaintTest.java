@@ -3,6 +3,7 @@ package test.ru.job4j.pseudo;
 import org.junit.Test;
 import ru.job4j.pseudo.Paint;
 import ru.job4j.pseudo.Square;
+import ru.job4j.pseudo.Triengle;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import static org.hamcrest.core.Is.is;
@@ -39,6 +40,27 @@ public class PaintTest {
                 )
         );
         // возвращаем обратно стандартный вывод в консоль.
+        System.setOut(stdout);
+    }
+
+    @Test
+    public void whenDrawTriangle() {
+        PrintStream stdout = System.out;
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        new Paint().draw(new Triengle());
+        assertThat(
+                new String(out.toByteArray()),
+                is(
+                        new StringBuilder()
+                                .append("   +   ")
+                                .append("  + +  ")
+                                .append(" +   + ")
+                                .append("+++++++")
+                                .append(System.lineSeparator())
+                                .toString()
+                )
+        );
         System.setOut(stdout);
     }
 }
