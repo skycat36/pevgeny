@@ -64,7 +64,7 @@ public class StartUI {
         for (int i = 0; i < items.length; i++){
             this.consoleInput.print(items[i]);
         }
-        System.console();
+        //System.console();
         return  items;
     }
 

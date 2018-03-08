@@ -37,6 +37,9 @@ public class StubInput implements Input {
 
     @Override
     public void print(Item data){
+        //System.out.println(data.getId());
+        System.out.println(data.getName());
+        //System.out.println(data.getDesc());
 
     }
 }
