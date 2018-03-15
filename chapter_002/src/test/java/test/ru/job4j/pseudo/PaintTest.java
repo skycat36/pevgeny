@@ -6,8 +6,10 @@ import org.junit.Test;
 import ru.job4j.pseudo.Paint;
 import ru.job4j.pseudo.Square;
 import ru.job4j.pseudo.Triengle;
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 

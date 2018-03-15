@@ -36,7 +36,9 @@ public class StartUI {
     public void init() {
         boolean exit = false;
         while (!exit) {
-            this.showMenu();
+            if (this.consoleInput.getClass() != StubInput.class) {
+                this.showMenu();
+            }
             String answer = this.consoleInput.ask("Введите пункт меню : ");
             switch (answer){
                 case ADD: this.createItem(); break;
@@ -56,7 +58,6 @@ public class StartUI {
         String desc = this.consoleInput.ask("Введите строку :");
         Item item = new Item(name, desc,0,null);
         this.tracker.add(item);
-        System.out.println("------------ Новая заявка с getId : " + item.getId() + "-----------");
     }
 
     private Item[] showAllItems(){
@@ -64,7 +65,7 @@ public class StartUI {
         for (int i = 0; i < items.length; i++){
             this.consoleInput.print(items[i]);
         }
-        //System.console();
+        System.console();
         return  items;
     }
 
