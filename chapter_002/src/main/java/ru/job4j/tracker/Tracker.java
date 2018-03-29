@@ -38,6 +38,18 @@ public class Tracker {
         return null;
     }
 
+    /**  Ищем элемент в массиве по name
+     *   @param  name - name обьекта
+     */
+    public Item findByName(String name) {
+        for (Item item : items) {
+            if (item.getName().equals(name)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
     /**  Удаляем элемент в массиве по id
     *   @param  id - id обьекта
     */

@@ -33,6 +33,7 @@ public class StartUI {
         this.tracker = tracker;
     }
 
+    /*
     public void init() {
         boolean exit = false;
         while (!exit) {
@@ -51,6 +52,18 @@ public class StartUI {
             }
         }
     }
+    */
+
+    public void init() {
+        MenuTracker menu = new MenuTracker(this.consoleInput, this.tracker);
+        do {
+            menu.show();
+            int key = Integer.parseInt(consoleInput.ask("Select: "));
+            menu.select(key);
+
+        } while (!"y".equals(this.consoleInput.ask("Exit? y")));
+    }
+
 
     private void createItem() {
         System.out.println("------------ Добавление новой заявки --------------");
@@ -60,13 +73,12 @@ public class StartUI {
         this.tracker.add(item);
     }
 
-    private Item[] showAllItems(){
+    private void showAllItems(){
         Item[] items = tracker.getAll();
         for (int i = 0; i < items.length; i++){
             this.consoleInput.print(items[i]);
         }
         System.console();
-        return  items;
     }
 
     private void editItem(){
@@ -122,7 +134,6 @@ public class StartUI {
      * @param args
      */
     public static void main(String[] args) {
-
         new StartUI(new ConsoleInput(), new Tracker()).init();
     }
 }

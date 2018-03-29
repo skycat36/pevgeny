@@ -17,6 +17,16 @@ public class Item {
     /**
      *   Конструктор
     */
+    public Item(String name, String desc){
+        Date date = new Date();
+        this.id = date.toString();
+        this.name = name;
+        this.desc = desc;
+
+    }
+
+
+
     public Item(String name, String desc, int created, String[] comments){
         Date date = new Date();
         this.id = date.toString();
