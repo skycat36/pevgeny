@@ -1,10 +1,14 @@
 package ru.job4j.tracker;
 
-public class MenuTracker  {
+public class MenuTracker implements UserAction{
 
     private Input input;
     private Tracker tracker;
     private UserAction[] actions = new UserAction[6];
+
+    public  MenuTracker(){
+
+    }
 
     public  MenuTracker(Input input, Tracker tracker){
         this.input = input;
@@ -14,7 +18,7 @@ public class MenuTracker  {
 
     public void fillAction(){
         this.actions[0] = new AddItem();
-        this.actions[1] = new ShowItem();
+        this.actions[1] = this;
         this.actions[2] = new EditItem();
         this.actions[3] = new DeleteItem();
         this.actions[4] = new FindItemById();
@@ -33,6 +37,23 @@ public class MenuTracker  {
         }
     }
 
+
+    public int key(){
+        return 1;
+    }
+
+    public void execute(Input input, Tracker tracker){
+        for (Item item: tracker.getAll()) {
+            System.out.println(String.format("%s. %s", item.getId(), item.getName()));
+        }
+    }
+
+    public String info(){
+        return String.format("%s. %s", this.key(), "Show  items. ");
+    }
+
+
+    //inner classes
     private class AddItem implements UserAction{
         public int key(){
             return 0;
@@ -46,23 +67,6 @@ public class MenuTracker  {
 
         public String info(){
             return String.format("%s. %s", this.key(), "Add the new item. ");
-        }
-    }
-
-    private static class ShowItem implements UserAction{
-        public int key(){
-            return 1;
-        }
-
-        public void execute(Input input, Tracker tracker){
-            for (Item item: tracker.getAll()) {
-                System.out.println(String.format("%s. %s", item.getId(), item.getName()));
-            }
-        }
-
-
-        public String info(){
-            return String.format("%s. %s", this.key(), "Show  items. ");
         }
     }
 

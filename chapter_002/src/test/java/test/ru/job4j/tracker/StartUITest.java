@@ -29,8 +29,9 @@ public class StartUITest {
 
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
+        this.out.reset();
         Tracker tracker = new Tracker();     // создаём Tracker
-        Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});   //создаём StubInput с последовательностью действий
+        Input input = new StubInput(new String[]{"0", "test name", "desc", "y"});   //создаём StubInput с последовательностью действий
         new StartUI(input, tracker).init();     //   создаём StartUI и вызываем метод init()
         Assert.assertEquals(tracker.getAll()[0].getName(), "test name"); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
         this.out.reset();
@@ -38,12 +39,13 @@ public class StartUITest {
 
     @Test
     public void whenUpdateThenTrackerHasUpdatedValue() {
+        this.out.reset();
         // создаём Tracker
         Tracker tracker = new Tracker();
         //Напрямую добавляем заявку
         Item item = tracker.add(new Item());
         //создаём StubInput с последовательностью действий
-        Input input = new StubInput(new String[]{"2", item.getId(), "test name", "desc", "6"});
+        Input input = new StubInput(new String[]{"2", item.getId(), "test name", "desc", "y"});
         // создаём StartUI и вызываем метод init()
         new StartUI(input, tracker).init();
         // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
@@ -55,44 +57,63 @@ public class StartUITest {
 
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameNameWithPrintBefore() {
-
+        this.out.reset();
         Tracker tracker = new Tracker();     // создаём Tracker
-        Input input = new StubInput(new String[]{"0", "test name", "desc", "1", "6"});   //создаём StubInput с последовательностью действий
+        Input input = new StubInput(new String[]{"0", "test name", "desc","y"});   //создаём StubInput с последовательностью действий
         new StartUI(input, tracker).init();     //   создаём StartUI и вызываем метод init()
         Assert.assertEquals(
                 this.out.toString(),
                 new StringBuilder()
-                        .append("------------ Добавление новой заявки --------------")
+                        .append("0. Add the new item. ")
                         .append(System.lineSeparator())
-                        .append("test name")
+                        .append("1. Show  items. ")
                         .append(System.lineSeparator())
-                        .toString());
+                        .append("2. Edit  items. ")
+                        .append(System.lineSeparator())
+                        .append("3. Delete  items. ")
+                        .append(System.lineSeparator())
+                        .append("4. Find item by Id. ")
+                        .append(System.lineSeparator())
+                        .append("5. Find item by name. ")
+                        .append(System.lineSeparator())
+                        .toString()
+                        );
                          // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
         this.out.reset();
     }
 
     @Test
     public void whenFindItemsByNameThenTrackerHasItem() {
+        this.out.reset();
         // создаём Tracker
         Tracker tracker = new Tracker();
         //Напрямую добавляем заявку
         Item item = new Item("test name","desk", 0, null);
         tracker.add(item);
         //создаём StubInput с последовательностью действий
-        Input input = new StubInput(new String[]{"5", "test name", "6"});
+        Input input = new StubInput(new String[]{"5", "test name", "y"});
         // создаём StartUI и вызываем метод init()
         new StartUI(input, tracker).init();
         // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
         Assert.assertEquals(
                 this.out.toString() ,
                 new StringBuilder()
-                .append("------------ Поиск записи по имени --------------")
-                .append(System.lineSeparator())
-                .append("test name")
-                .append(System.lineSeparator())
-                .toString()
+                        .append("0. Add the new item. ")
+                        .append(System.lineSeparator())
+                        .append("1. Show  items. ")
+                        .append(System.lineSeparator())
+                        .append("2. Edit  items. ")
+                        .append(System.lineSeparator())
+                        .append("3. Delete  items. ")
+                        .append(System.lineSeparator())
+                        .append("4. Find item by Id. ")
+                        .append(System.lineSeparator())
+                        .append("5. Find item by name. ")
+                        .append(System.lineSeparator())
+                        .append(String.format("%s. %s", item.getId(), item.getName()))
+                        .append(System.lineSeparator())
+                        .toString()
         );
-        this.out.reset();
     }
 
 
