@@ -32,9 +32,7 @@ public class StartUI {
         MenuTracker menu = new MenuTracker(this.consoleInput, this.tracker);
         do {
             menu.show();
-            int key = Integer.parseInt(consoleInput.ask("Select: "));
-            menu.select(key);
-            //menu.select(this.consoleInput.ask("Select: ", range));
+            menu.select(this.consoleInput.ask("Select: ", range));
 
         } while (!"y".equals(this.consoleInput.ask("Exit? y")));
     }
