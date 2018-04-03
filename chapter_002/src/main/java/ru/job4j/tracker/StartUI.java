@@ -30,6 +30,7 @@ public class StartUI {
 
     public void init() {
         MenuTracker menu = new MenuTracker(this.consoleInput, this.tracker);
+        this.range = menu.getRange();
         do {
             menu.show();
             menu.select(this.consoleInput.ask("Select: ", range));
@@ -43,6 +44,6 @@ public class StartUI {
      * @param args
      */
     public static void main(String[] args) {
-        new StartUI(new ValidateInput(), new Tracker()).init();
+        new StartUI(new ValidateInput(new ConsoleInput()), new Tracker()).init();
     }
 }

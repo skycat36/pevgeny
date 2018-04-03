@@ -32,6 +32,23 @@ public class MenuTracker {
         fillAction();
     }
 
+    public int[] getRange(){
+        int countActions = 0;
+        for (int i=0; i < actions.length; i++){
+            if (actions[i]!= null){
+                countActions++;
+            }
+        }
+        int[] range = new int[countActions];
+        countActions = 0;
+        for (int i=0; i < actions.length; i++){
+            if (actions[i]!= null){
+                range[countActions++] = actions[i].key();
+            }
+        }
+        return range;
+    }
+
 
     public void fillAction(){
         this.actions[0] = new AddItem();
@@ -53,10 +70,6 @@ public class MenuTracker {
             }
         }
     }
-
-
-
-
 
     //inner classes
     private class AddItem implements UserAction{
