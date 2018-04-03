@@ -1,6 +1,22 @@
 package ru.job4j.tracker;
 
-public class MenuTracker implements UserAction{
+class ShowItems implements UserAction{
+    public int key(){
+        return 1;
+    }
+
+    public void execute(Input input, Tracker tracker){
+        for (Item item: tracker.getAll()) {
+            System.out.println(String.format("%s. %s", item.getId(), item.getName()));
+        }
+    }
+
+    public String info(){
+        return String.format("%s. %s", this.key(), "Show  items. ");
+    }
+}
+
+public class MenuTracker {
 
     private Input input;
     private Tracker tracker;
@@ -16,9 +32,10 @@ public class MenuTracker implements UserAction{
         fillAction();
     }
 
+
     public void fillAction(){
         this.actions[0] = new AddItem();
-        this.actions[1] = this;
+        this.actions[1] = new ShowItems();
         this.actions[2] = new EditItem();
         this.actions[3] = new DeleteItem();
         this.actions[4] = new FindItemById();
@@ -38,19 +55,7 @@ public class MenuTracker implements UserAction{
     }
 
 
-    public int key(){
-        return 1;
-    }
 
-    public void execute(Input input, Tracker tracker){
-        for (Item item: tracker.getAll()) {
-            System.out.println(String.format("%s. %s", item.getId(), item.getName()));
-        }
-    }
-
-    public String info(){
-        return String.format("%s. %s", this.key(), "Show  items. ");
-    }
 
 
     //inner classes

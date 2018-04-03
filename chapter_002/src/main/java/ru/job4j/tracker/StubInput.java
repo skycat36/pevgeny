@@ -36,6 +36,13 @@ public class StubInput implements Input {
     }
 
     @Override
+    public int ask(String question, int[] range) {
+
+        //throw new UnsupportedOperationException("Unsupported Operation Exception");
+        return -1;
+    }
+
+    @Override
     public void print(Item data){
         System.out.println(data.getName());
     }
