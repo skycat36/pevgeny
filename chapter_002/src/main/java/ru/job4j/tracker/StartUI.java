@@ -7,7 +7,7 @@ package ru.job4j.tracker;
  */
 public class StartUI {
 
-    private int[] range = new int[] {1, 2, 3, 4};
+    private int[] range = new int[] {1, 2, 3, 4, 5};
 
     private final Input consoleInput;
 
@@ -31,6 +31,14 @@ public class StartUI {
     public void init() {
         MenuTracker menu = new MenuTracker(this.consoleInput, this.tracker);
         this.range = menu.getRange();
+        BaseAction deleteAction = new BaseAction(3, "Delete") {
+            @Override
+            public void execute(Input input, Tracker tracker) {
+                String id = input.ask("Please, enter the task's id: ");
+                tracker.delete(id);
+            }
+        };
+        menu.addAction(deleteAction);
         do {
             menu.show();
             menu.select(this.consoleInput.ask("Select: ", range));
