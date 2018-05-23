@@ -31,14 +31,6 @@ public class StartUI {
     public void init() {
         MenuTracker menu = new MenuTracker(this.consoleInput, this.tracker);
         this.range = menu.getRange();
-        BaseAction deleteAction = new BaseAction(3, "Delete") {
-            @Override
-            public void execute(Input input, Tracker tracker) {
-                String id = input.ask("Please, enter the task's id: ");
-                tracker.delete(id);
-            }
-        };
-        menu.addAction(deleteAction);
         do {
             menu.show();
             menu.select(this.consoleInput.ask("Select: ", range));

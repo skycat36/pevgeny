@@ -32,8 +32,8 @@ public class MenuTracker {
     public void fillAction(){
         this.actions[position++] = new AddItem(0, "Add the new item.");
         this.actions[position++] = new ShowItems(1, "Show  items.");
-        this.actions[position++] = new EditItem(2,"Edit  items.");
-        //this.actions[position++] = new DeleteItem();
+        this.actions[position++] = new EditItem(2,"Edit  item.");
+        this.actions[position++] = new DeleteItem(3,"Delete  item.");
         this.actions[position++] = new FindItemById(4, "Find item by Id. ");
         this.actions[position++] = new FindItemByName(5, "Find item by name. ");
     }
@@ -102,10 +102,10 @@ public class MenuTracker {
         }
     }
 
-/*
-    class DeleteItem implements UserAction{
-        public int key(){
-            return 3;
+    class DeleteItem extends BaseAction{
+
+        public DeleteItem(int key, String name){
+            super(key, name);
         }
 
         public void execute(Input input, Tracker tracker){
@@ -113,12 +113,7 @@ public class MenuTracker {
             tracker.delete(id);
         }
 
-
-        public String info(){
-            return String.format("%s. %s", this.key(), "Delete  items. ");
-        }
     }
-*/
 
     class FindItemById extends BaseAction{
         public FindItemById(int key, String name) {
