@@ -34,8 +34,8 @@ public class MenuTracker {
         this.actions[position++] = new ShowItems(1, "Show  items.");
         this.actions[position++] = new EditItem(2,"Edit  item.");
         this.actions[position++] = new DeleteItem(3,"Delete  item.");
-        this.actions[position++] = new FindItemById(4, "Find item by Id. ");
-        this.actions[position++] = new FindItemByName(5, "Find item by name. ");
+        this.actions[position++] = new FindItemById(4, "Find item by Id.");
+        this.actions[position++] = new FindItemByName(5, "Find item by name.");
     }
 
     public void addAction(BaseAction baseAction){
