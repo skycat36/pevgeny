@@ -22,17 +22,6 @@ public class BishopWhite extends Figure {
         return this.position;
     }
 
-    /*
-    private boolean isDiagonal(Cell source, Cell dest) {
-
-
-        if (Math.abs(source.x - dest.x) == 1 && Math.abs(source.y - dest.y) == 1) {
-            return true;
-        }
-        return false;
-    }
-    */
-
     private Cell getCell(int x, int y){
         Cell cellTemp = null;
         for (Cell cell: Cell.values()) {
@@ -46,14 +35,14 @@ public class BishopWhite extends Figure {
 
     @Override
     public Cell[] way(Cell source, Cell dest) throws ImposibleMoveExeption {
+        if (Math.abs(source.x - dest.x) != Math.abs(source.y - dest.y))
+        {
+            throw new ImposibleMoveExeption("Figure don't move to point of destination.");
+        }
         int deltaX = source.x;
         int deltaY = source.y;
         int i=0;
         Cell[] steps = new Cell[Math.abs(source.x - dest.x)];
-        if (source.x - dest.x != source.y - dest.y)
-        {
-            throw new ImposibleMoveExeption("Figure don't move to point of destination.");
-        }
         while (deltaX != dest.x || deltaY != dest.y){
             if (dest.x > source.x){
                 deltaX++;
@@ -70,9 +59,6 @@ public class BishopWhite extends Figure {
             steps[i] = this.getCell(deltaX, deltaY);
             i++;
 
-        }
-        if (deltaX - dest.x != 0 && deltaY - dest.y != 0) {
-            throw new ImposibleMoveExeption("Figure don't move to point of destination.");
         }
         return steps;
     }

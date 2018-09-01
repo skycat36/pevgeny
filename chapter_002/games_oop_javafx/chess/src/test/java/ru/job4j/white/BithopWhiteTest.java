@@ -47,8 +47,8 @@ public class BithopWhiteTest {
             result = false;
             e.printStackTrace();
         } catch (OccupiedWayException e) {
-            result = false;
             e.printStackTrace();
+            result = false;
         } catch (ImposibleMoveExeption imposibleMoveExeption) {
             result = false;
         }
@@ -69,7 +69,7 @@ public class BithopWhiteTest {
         } catch (FigureNotFoundException e) {
             e.printStackTrace();
         } catch (OccupiedWayException e) {
-            e.printStackTrace();
+            result = false;
         } catch (ImposibleMoveExeption imposibleMoveExeption) {
             imposibleMoveExeption.printStackTrace();
         }
