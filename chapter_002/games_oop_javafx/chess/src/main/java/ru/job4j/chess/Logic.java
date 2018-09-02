@@ -33,7 +33,6 @@ public class Logic {
                 if (figure != null) {
                     if (step.equals(figure.position())) {
                         throw new OccupiedWayException("Figure on the way");
-                        rst = false;
                     }
                 }
             }
@@ -52,7 +51,7 @@ public class Logic {
         this.index = 0;
     }
 
-    private int findBy(Cell cell) {
+    private int findBy(Cell cell) throws FigureNotFoundException {
         int rst = -1;
         for (int index = 0; index != this.figures.length; index++) {
             if (this.figures[index] != null && this.figures[index].position().equals(cell)) {

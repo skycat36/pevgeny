@@ -34,46 +34,22 @@ public class BithopWhiteTest {
         Assert.assertEquals(true, result);
     }
 
-    @Test
-    public void wayTestWhereFigureStepFalse(){
+    @Test(expected = ImposibleMoveExeption.class)
+    public void wayTestWhereFigureStepthenExeption() throws OccupiedWayException, FigureNotFoundException, ImposibleMoveExeption {
         Logic logic = new Logic();
         Figure figure = new BishopWhite(Cell.C1);
         logic.add(figure);
-        boolean result = true;
-        try {
-            logic.move(Cell.C1, Cell.E1);
-
-        } catch (FigureNotFoundException e) {
-            result = false;
-            e.printStackTrace();
-        } catch (OccupiedWayException e) {
-            e.printStackTrace();
-            result = false;
-        } catch (ImposibleMoveExeption imposibleMoveExeption) {
-            result = false;
-        }
-        Assert.assertEquals(false, result);
+        logic.move(Cell.C1, Cell.E1);
     }
 
-    @Test
-    public void wayTestWhereFigureCannotJumpOverFigureThenFalse(){
+    @Test(expected = OccupiedWayException.class)
+    public void wayTestWhereFigureCannotJumpOverFigureThenExeption() throws OccupiedWayException, FigureNotFoundException, ImposibleMoveExeption {
         Logic logic = new Logic();
         Figure figureBishopWhite = new BishopWhite(Cell.C1);
         Figure figurePawnWhite = new PawnWhite(Cell.D2);
         logic.add(figureBishopWhite);
         logic.add(figurePawnWhite);
-        boolean result = true;
-        try {
-            result = logic.move(Cell.C1, Cell.E3);
-
-        } catch (FigureNotFoundException e) {
-            e.printStackTrace();
-        } catch (OccupiedWayException e) {
-            result = false;
-        } catch (ImposibleMoveExeption imposibleMoveExeption) {
-            imposibleMoveExeption.printStackTrace();
-        }
-        Assert.assertEquals(false, result);
+        logic.move(Cell.C1, Cell.E3);
     }
 
 }
